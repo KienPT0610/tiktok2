@@ -1,6 +1,7 @@
 import tkinter as tk
 import pyautogui as pag
 import time
+import webbrowser
 
 # Biến toàn cục để lưu vị trí con trỏ chuột khi nhấn nút "CheckpointLike"
 like_position = None
@@ -90,10 +91,18 @@ def get_mouse_position_like():
     x_like_entry.insert(0, like_position.x)  # Nhập vị trí x vào ô nhập x_like
     y_like_entry.insert(0, like_position.y)  # Nhập vị trí y vào ô nhập y_like
 
+def open_tiktok():
+     # Tạo URL đăng nhập với username và password
+    login_url = f"https://www.tiktok.com/"
+    # Mở trang web trong trình duyệt mặc định
+    webbrowser.open(login_url)
+
 # Tạo cửa sổ
 root = tk.Tk()
 root.title("auto tiktok by KienPT")
 # root.geometry("400x700")
+# Thay đổi icon
+root.iconbitmap("/icon.ico") 
 
 # Tạo khung chứa các ô nhập vị trí Follow
 follow_frame = tk.Frame(root)
@@ -156,6 +165,10 @@ output_text.pack(pady=10)
 # Tạo khung chứa các nút bấm
 button_frame = tk.Frame(root)
 button_frame.pack(pady=5)
+
+#Tạo ô mở web tiktok
+open_Tiktok = tk.Button(button_frame, text="Open Tiktok", command=open_tiktok)
+open_Tiktok.pack(side=tk.LEFT, padx=5)
 
 # Tạo nút "Start"
 start_button = tk.Button(button_frame, text="Start", command=start_action)
